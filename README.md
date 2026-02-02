@@ -17,6 +17,7 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 
 ## 🧱 Architecture Overview
 
+![]()
 
 
 ---
@@ -33,19 +34,9 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 
 ---
 
-## ⚙️ Implementation Steps (High Level)
-
-1. Created a public EC2 instance (Ubuntu) as a honeypot
-2. Configured Security Groups with open SSH access
-3. Enabled VPC Flow Logs for traffic monitoring
-4. Stored logs in CloudWatch Log Groups
-5. Created CloudWatch Alarms for abnormal traffic
-6. Integrated SNS for real-time email alerts
-7. Tested alerts using simulated SSH attack attempts
-
 ---
 
-## 🚨 Alerting Mechanism
+## Alerting Mechanism
 - CloudWatch monitors **NetworkIn** metrics
 - When traffic crosses a defined threshold:
   - Alarm state changes to **ALARM**
@@ -54,46 +45,107 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 
 ---
 
+---
+
+## 🛠️ Technologies Used
+- **AWS EC2** – Honeypot server
+- **AWS VPC** – Network isolation
+- **Security Groups** – Open ports to attract attackers
+- **VPC Flow Logs** – Network traffic capture
+- **AWS CloudWatch** – Log storage and monitoring
+- **AWS SNS** – Email alert notifications
+- **AWS IAM** – Role-based access control
+- **AWS CloudTrail** – API activity logging
+- **Amazon S3** – Log storage
+
+---
+
+## ⚙️ Implementation Steps (High Level)
+1. Created a public EC2 instance (Ubuntu) as a honeypot
+2. Configured Security Groups with open SSH access
+3. Created IAM role for VPC Flow Logs and CloudWatch
+4. Enabled VPC Flow Logs
+5. Stored logs in CloudWatch and S3
+6. Created CloudWatch Alarm for abnormal traffic
+7. Integrated SNS for email alerts
+8. Tested alerts using simulated SSH attacks
+
+---
+
+## 🚨 Alerting Mechanism
+- CloudWatch monitors **NetworkIn** metrics
+- When traffic exceeds the threshold:
+  - Alarm state changes to **ALARM**
+  - SNS sends an **email notification**
+- This simulates real-time incident detection used in SOC environments
+
+---
+
 ## 📸 Screenshots
 
-> Screenshots are included to demonstrate real deployment and monitoring.
+### 📷 Attacker Simulation
+![Attacker](attacker.png)
 
-### 📷 EC2 Honeypot Instance
-![EC2 Instance](screenshots/ec2-instance.png)
+### 📷 VPC Configuration
+![VPC](vpc-honey.png)
+
+### 📷 Honeypot EC2 Instance
+![EC2 Honeypot](honeypot-ec2.png)
 
 ### 📷 Security Group Configuration
-![Security Group](screenshots/security-group.png)
+![Security Group](securitygroup.png)
+
+### 📷 IAM Role Creation
+![IAM Role Creation](Iamrolecreation.png)
+
+### 📷 IAM Role Attached
+![IAM Role](IAMrole.png)
+
+### 📷 VPC Flow Logs Creation
+![VPC Flow Logs Creation](vpcflowlogscreation.png)
 
 ### 📷 VPC Flow Logs
-![VPC Flow Logs](screenshots/vpc-flow-logs.png)
+![VPC Flow Logs](VPC-flowlog.png)
 
-### 📷 CloudWatch Log Group
-![CloudWatch Logs](screenshots/cloudwatch-logs.png)
+### 📷 VPC Flow Traffic
+![VPC Flow Traffic](VPC-flow.png)
+
+### 📷 CloudWatch Logs
+![CloudWatch Logs](clouudwatch.png)
 
 ### 📷 CloudWatch Alarm
-![CloudWatch Alarm](screenshots/cloudwatch-alarm.png)
+![SNS Alarm](snsaleram.png)
 
 ### 📷 SNS Email Alert
-![SNS Alert](screenshots/sns-alert.png)
+![SNS Alert Email](SMSalertEmail.png)
+
+### 📷 CloudTrail Creation
+![CloudTrail Creation](cloudtrailcreation.png)
+
+### 📷 CloudTrail Logs
+![CloudTrail](cloudtrail.png)
+
+### 📷 Logs Stored in S3
+![S3 Logs](s3-store-logs.png)
 
 ---
 
 ## 📊 Key Outcomes
 - Successfully captured real attacker traffic
-- Identified source IP addresses and connection attempts
-- Implemented centralized monitoring and alerting
-- Gained hands-on experience with AWS cloud security services
-- Simulated SOC-level detection and alert workflow
+- Identified malicious source IP addresses
+- Implemented centralized log monitoring
+- Generated real-time security alerts
+- Simulated SOC-level detection workflow
 
 ---
 
 ## 🎤 Interview Explanation (One Line)
-> “I deployed an AWS-based honeypot using EC2 and monitored real attacker traffic with VPC Flow Logs, CloudWatch, and SNS-based real-time alerts.”
+> “I deployed an AWS-based honeypot using EC2 and detected real attacker traffic using VPC Flow Logs, CloudWatch, and SNS alerts.”
 
 ---
 
 ## 🚀 Future Enhancements
-- Integrate SIEM (Elastic Stack / Splunk)
+- Integrate SIEM tools (Elastic Stack / Splunk)
 - Add GeoIP-based attacker visualization
 - Automate IP blocking using AWS Lambda
 - Map attacks to MITRE ATT&CK framework
@@ -102,6 +154,7 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 
 ## 👨‍💻 Author
 **Thilak**  
-Cybersecurity & Cloud Security Enthusiast  
+Cybersecurity & Cloud Security Enthusiast
+
 
 

@@ -36,6 +36,8 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 ### Honeypot EC2 Instance
 ![](honeypot-ec2.png)
 
+![](honeypot-server.png)
+
 ### Security Group Configuration
 ![](securitygroup.png)
 
@@ -76,6 +78,7 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 ![](SMSalertEmail.png)
 
 ### Logs Stored in S3
+
 ![](s3-store-logs.png)
 
 ---

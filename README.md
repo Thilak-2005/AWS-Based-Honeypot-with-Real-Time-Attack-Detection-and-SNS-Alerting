@@ -14,7 +14,7 @@ The system uses **AWS-native monitoring and alerting services** to simulate a re
 
 ---
 
-## 🧱 Architecture Overview
+## Architecture Overview :
 
 ![](architecture.png)
 
